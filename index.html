@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimeUI Base</title>
+
+    <!--
+      Favicon seti vue.primeuipro.dev ile ayni yaklasimi kullanir: iki SVG dosyasi,
+      media niteligiyle secilir. Boylece koyu tarayici temasinda ikon beyaz cizilir.
+      favicon.ico, SVG favicon desteklemeyen eski tarayicilar ve /favicon.ico adresini
+      kendiliginden isteyen istemciler icin yedektir.
+    -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/primeui-favicon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/primeui-favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <!-- iOS ana ekran kisayolu: seffaflik desteklemedigi icin beyaz zeminli opak PNG. -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <script>
+      // Uygulama yuklenmeden once koyu temayi uygular; boylece acilista beyaz parlama olmaz.
+      // TEK KAYNAK: 'app-dark' ve 'color-scheme' anahtarlari src/main.ts icindeki
+      // darkModeSelector ve src/composables/useColorScheme.ts ile ayni olmali.
+      try {
+        var stored = localStorage.getItem('color-scheme');
+        var dark =
+          stored === 'dark' ||
+          (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('app-dark');
+      } catch (e) {
+        /* localStorage erisilemiyorsa varsayilan acik tema */
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

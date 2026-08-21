@@ -1,0 +1,13 @@
+@import './base.css';
+
+/*
+ * Tailwind kullanilmiyor; duz CSS.
+ * #app viewport'u dolduran ortalama kabi, icerik dizilimi App.vue > .page icinde.
+ */
+#app {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}

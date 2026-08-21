@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+      # Anahtar derleme zamanında gerekir. Değeri buraya YAZMAYIN; kabuk
+      # ortamından veya .env dosyasından gelsin (compose ${...} ile okur).
+      args:
+        VITE_PRIMEVUE_LICENSE: ${VITE_PRIMEVUE_LICENSE:?VITE_PRIMEVUE_LICENSE tanimli degil}
+    image: primeui-base:local
+    ports:
+      - '8080:80'
+    restart: unless-stopped

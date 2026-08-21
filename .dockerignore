@@ -1,0 +1,25 @@
+# Derleme bağlamına girmemesi gerekenler.
+# node_modules'ü hariç tutmak önemli: imaj içinde `npm ci` ile yeniden kurulur,
+# yerel (Windows) kurulumun kopyalanması hem yavaş hem platform uyumsuzdur.
+node_modules
+dist
+dist-ssr
+coverage
+
+# Lisans anahtarı --build-arg ile verilir, dosya olarak imaja girmemeli.
+.env
+.env.*
+!.env.example
+
+.git
+.gitignore
+.idea
+.vscode
+*.log
+npm-debug.log*
+
+Dockerfile
+.dockerignore
+docker-compose.yml
+README.md
+DEPLOY.md

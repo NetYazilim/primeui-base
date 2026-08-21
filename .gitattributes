@@ -1,0 +1,31 @@
+# Satır sonlarını her platformda LF'te sabitler.
+#
+# NEDEN: bu proje Windows'ta geliştiriliyor ama scripts/verify-docker.sh bir bash
+# script'i. Git'in core.autocrlf ayarı dosyayı CRLF'ye çevirirse bash
+# "$'\r': command not found" ile ölür. Aynısı Docker imajının içine kopyalanan
+# docker/*.conf dosyaları için de geçerli — nginx CRLF'li satırlarda beklenmedik
+# davranır. .editorconfig zaten LF diyor; bu dosya onu git tarafında zorunlu kılar.
+* text=auto eol=lf
+
+# Kritik olanlar açıkça yazılı: kimse "* text=auto" satırını silip bunları
+# farkında olmadan bozmasın.
+*.sh   text eol=lf
+*.conf text eol=lf
+
+# İkili dosyalar — git bunları metin sanıp normalize etmeye kalkmasın.
+*.ico  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.woff  binary
+*.woff2 binary
+*.pdf  binary
+
+# NOT: *.svg ikili DEĞİL, XML'dir. Metin olarak bırakılıyor ki favicon
+# değişiklikleri diff'te okunabilir olsun.
+
+# Üretilmiş dosyalar: GitHub bunları diff'te katlar, dil istatistiklerine katmaz.
+package-lock.json linguist-generated=true
+components.d.ts   linguist-generated=true
